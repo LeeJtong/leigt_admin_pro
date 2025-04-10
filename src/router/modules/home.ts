@@ -95,36 +95,6 @@ export default {
                 isShow: true,
                 parentRouter: 'Layout'
             }
-        },
-        {
-            path: '/auth',
-            name: 'AuthPage',
-            component: () => import(/* webpackChunkName: "auth" */ '@/views/auth/index.vue'),
-            meta: {
-                title: '权限模块',
-                isShow: true,
-                parentRouter: 'Layout'
-            }
-        },
-        {
-            path: '/auth',
-            name: 'AuthPage',
-            component: () => import(/* webpackChunkName: "auth" */ '@/views/auth/index.vue'),
-            meta: {
-                title: '权限模块',
-                isShow: true,
-                parentRouter: 'Layout'
-            }
-        },
-        {
-            path: '/auth',
-            name: 'AuthPage',
-            component: () => import(/* webpackChunkName: "auth" */ '@/views/auth/index.vue'),
-            meta: {
-                title: '权限模块',
-                isShow: true,
-                parentRouter: 'Layout'
-            }
         }
     ]
 };
