@@ -1,0 +1,10 @@
+html[data-theme='dark']:root {
+  --leigt-backgroud-color: black;
+  --leigt-color-dark-black: white;
+  --leigt-color-dark-gray: white;
+}
+html[data-theme='light']:root {
+  --leigt-backgroud-color: white;
+  --leigt-color-dark-black: black;
+  --leigt-color-dark-gray: gray;
+}
