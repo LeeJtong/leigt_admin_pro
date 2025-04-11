@@ -1,99 +1,37 @@
 export default {
     path: '/',
-    name: 'Layout',
-    redirect: '/',
+    name: 'Home',
+    redirect: '/home',
     component: () => import(/* webpackChunkName: "home" */ '@/layout/index.vue'),
     meta: {
         role: ['common', 'admin']
-        // parentRouter: 'Home'
     },
     children: [
         {
-            path: '/',
+            path: '/home',
             name: 'HomePage',
-            component: () => import(/* webpackChunkName: "HomePage" */ '@/views/home/index.vue'),
+            component: () => import(/* webpackChunkName: "home" */ '@/views/home/index.vue'),
             meta: {
                 isShow: true,
-                title: '默认首页',
-                parentRouter: 'Layout'
+                title: '首页'
             }
         },
         {
-            path: '/project',
-            name: 'ProjectPage',
-            component: () => import(/* webpackChunkName: "home" */ '@/views/project/index.vue'),
+            path: '/search',
+            name: 'SearchPage',
+            component: () => import(/* webpackChunkName: "search" */ '@/views/search/index.vue'),
             meta: {
-                isShow: true,
-                title: '项目介绍',
-                parentRouter: 'Layout'
+                title: '搜索模块',
+                isShow: true
             }
         },
         {
-            path: '/p',
-            name: 'ParentPage',
+            path: '/setting',
+            name: 'SettingPage',
+            component: () => import(/* webpackChunkName: "setting" */ '@/views/setting/index.vue'),
             meta: {
-                isShow: true,
-                title: '父菜单',
-                parentRouter: 'Layout'
-            },
-            children: [
-                {
-                    path: '/p/child1',
-                    name: 'ChildPage1',
-                    meta: {
-                        isShow: true,
-                        title: '子菜单1',
-                        parentRouter: 'ParentPage'
-                    }
-                },
-                {
-                    path: '/p/child2',
-                    name: 'ChildPage2',
-                    meta: {
-                        isShow: true,
-                        title: '子菜单2',
-                        parentRouter: 'ParentPage'
-                    }
-                },
-                {
-                    path: '/p/child3',
-                    name: 'ChildPage3',
-                    meta: {
-                        isShow: true,
-                        title: '子菜单3',
-                        parentRouter: 'ParentPage'
-                    }
-                }
-            ]
-        },
-        {
-            path: '/user',
-            name: 'UserPage',
-            component: () => import(/* webpackChunkName: "user" */ '@/views/user/index.vue'),
-            meta: {
-                title: '用户模块',
-                isShow: true,
-                parentRouter: 'Layout'
-            }
-        },
-        {
-            path: '/role',
-            name: 'RolePage',
-            component: () => import(/* webpackChunkName: "role" */ '@/views/role/index.vue'),
-            meta: {
-                title: '角色模块',
-                isShow: true,
-                parentRouter: 'Layout'
-            }
-        },
-        {
-            path: '/auth',
-            name: 'AuthPage',
-            component: () => import(/* webpackChunkName: "auth" */ '@/views/auth/index.vue'),
-            meta: {
-                title: '权限模块',
-                isShow: true,
-                parentRouter: 'Layout'
+                title: '设置模块',
+                isShow: true
             }
         }
     ]

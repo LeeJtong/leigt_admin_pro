@@ -1,52 +1,25 @@
 <template>
-    <el-config-provider :locale="locale">
-        <el-container>
-            <el-header>
-                <Header></Header>
-            </el-header>
-            <el-container>
-                <el-aside width="200px">
-                    <Menu class="Menu"></Menu>
-                </el-aside>
-                <el-main>
-                    <el-breadcrumb :separator-icon="ArrowRight">
-                        <el-breadcrumb-item v-for="item in settingStore.title" :key="item" :to="{ name: item.name }">
-                            {{ item.currentNameZH }}
-                        </el-breadcrumb-item>
-                    </el-breadcrumb>
-                    <router-view></router-view>
-                </el-main>
-            </el-container>
-        </el-container>
-    </el-config-provider>
+    <div class="wrap-container">
+        <router-view />
+        <van-tabbar v-model="active" route>
+            <van-tabbar-item replace to="/home" icon="home-o">首页</van-tabbar-item>
+            <van-tabbar-item replace to="/search" icon="search">搜索</van-tabbar-item>
+            <van-tabbar-item replace to="/setting" icon="setting-o">设置</van-tabbar-item>
+        </van-tabbar>
+    </div>
 </template>
+
 <script lang="ts" setup>
-import Header from './components/Header.vue';
-import zhCn from 'element-plus/dist/locale/zh-cn.mjs';
-import en from 'element-plus/dist/locale/en.mjs';
-import Menu from './components/DiyMenu.vue';
-import { ArrowRight } from '@element-plus/icons-vue';
-import { useSettingStore } from '@/store/setting';
-
-const settingStore = useSettingStore();
-const language = ref('zh-cn');
-const locale = computed(() => (language.value === 'zh-cn' ? zhCn : en));
+// import { useRouter, useRoute } from 'vue-router';
+// const router = useRouter();
+// const route = useRoute();
+const active = ref<string>('home');
 </script>
-
-<style lang="less" scoped>
-.el-header {
-    padding: 0;
-    margin-bottom: 5px;
-}
-
-.el-container {
-    height: 100%;
-    .Menu {
-        height: 100%;
-    }
-}
-
-.el-breadcrumb {
-    margin-bottom: 10px;
+<style scoped lang="less">
+.wrap-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 </style>

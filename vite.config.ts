@@ -9,14 +9,15 @@ import AutoImport from 'unplugin-auto-import/vite';
 import Icons from 'unplugin-icons/vite';
 import Components from 'unplugin-vue-components/vite';
 import IconsResolver from 'unplugin-icons/resolver';
-import ElementPlus from 'unplugin-element-plus/vite';
-import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
+// import ElementPlus from 'unplugin-element-plus/vite';
+// import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 import { visualizer } from 'rollup-plugin-visualizer';
 import externalGlobals from 'rollup-plugin-external-globals';
-import ViteCompression from 'vite-plugin-compression';
-import brotli from 'rollup-plugin-brotli';
-import { createHtmlPlugin } from 'vite-plugin-html';
+// import ViteCompression from 'vite-plugin-compression';
+// import brotli from 'rollup-plugin-brotli';
+// import { createHtmlPlugin } from 'vite-plugin-html';
 import { manualChunksPlugin } from 'vite-plugin-webpackchunkname';
+import { VantResolver } from '@vant/auto-import-resolver';
 
 const globals = externalGlobals({
     moment: 'moment',
@@ -46,20 +47,20 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
         },
         plugins: [
             // 自动化外链
-            createHtmlPlugin({
-                inject: {
-                    data: {
-                        monentscript:
-                            '<script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.js"></script>',
-                        videoscript:
-                            '<script src="https://cdn.jsdelivr.net/npm/video.js@7.14.3/dist/video.min.js"></script>',
-                        echartscript: '<script src="https://cdn.jsdelivr.net/npm/echarts@5.2.1/echarts"></script>',
-                        jspdfscript: '<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/pdf.js"></script>',
-                        xlsxscript:
-                            '<script src="https://cdn.jsdelivr.net/npm/xlsx@0.17.4/dist/xlsx.full.min.js"></script>'
-                    }
-                }
-            }),
+            // createHtmlPlugin({
+            //     inject: {
+            //         data: {
+            //             monentscript:
+            //                 '<script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.js"></script>',
+            //             videoscript:
+            //                 '<script src="https://cdn.jsdelivr.net/npm/video.js@7.14.3/dist/video.min.js"></script>',
+            //             echartscript: '<script src="https://cdn.jsdelivr.net/npm/echarts@5.2.1/echarts"></script>',
+            //             jspdfscript: '<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/pdf.js"></script>',
+            //             xlsxscript:
+            //                 '<script src="https://cdn.jsdelivr.net/npm/xlsx@0.17.4/dist/xlsx.full.min.js"></script>'
+            //         }
+            //     }
+            // }),
             // brotli压缩插件
             // brotli({}),
 
@@ -84,7 +85,7 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
             }),
 
             // 开启ElementPlus自动引入CSS
-            ElementPlus({}),
+            // ElementPlus({}),
             // 自动引入组件及ICON
             AutoImport({
                 // 定义需要自动引入的框架
@@ -94,12 +95,14 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
                     enabled: true
                 },
                 // 自动引入组件及ICON配置文件路径
-                resolvers: [ElementPlusResolver(), IconsResolver()],
+                // resolvers: [ElementPlusResolver(), IconsResolver()],
+                resolvers: [VantResolver(), IconsResolver()],
                 dts: fileURLToPath(new URL('./types/auto-imports.d.ts', import.meta.url))
             }),
             // 自动注册组件
             Components({
-                resolvers: [IconsResolver(), ElementPlusResolver()],
+                // resolvers: [IconsResolver(), ElementPlusResolver()],
+                resolvers: [VantResolver(), IconsResolver()],
                 dts: fileURLToPath(new URL('/types/components.d.ts', import.meta.url)),
                 dirs: [fileURLToPath(new URL('./src/components/auto', import.meta.url))],
                 include: [/\.vue$/, /\.vue\?/]

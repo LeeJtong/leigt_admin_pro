@@ -32,6 +32,7 @@ module.exports = {
     // 自定义规则
     rules: {
         '@typescript-eslint/no-unused-vars': 'off',
+        '@typescript-eslint/no-require-imports': 'off',
         indent: [
             'error',
             4,
@@ -54,7 +55,6 @@ module.exports = {
         'vue/no-template-shadow': 'off',
         'vue/require-v-for-key': 'off',
         'vue/no-textarea-mustache': 'off',
-        'vue/no-v-html': 'off',
-        'no-constant-condition': 'off'
+        'vue/no-v-html': 'off'
     }
 };
