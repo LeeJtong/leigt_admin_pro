@@ -1,0 +1,29 @@
+name: todoList 自动部署  // 名字
+on:
+  push:
+    branches:
+      - master  // 只要push到master分支，就会触发后续流程
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+		// # Github官方发布的action，用于clone该仓库的源码到工作流中
+      - uses: actions/checkout@v3
+		// pnpm
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8.6.2
+		// # 在工作流中安装node环境
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          
+          # 打包代码生成环境
+      - run: npm install
+      - run: npm run build
+      - name: action-Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.DEPLOY_SECRET }} // DEPLOY_SECRET：这是个key值 需要对应
+          BRANCH: gh-pages // 分支
+          publish_dir: ./dist  // 产物
