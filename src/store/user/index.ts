@@ -17,7 +17,7 @@ export type LoginRequest = {
 
 export const useUserStoreHook = defineStore('userInfo', {
     state: (): UserState => ({
-        username: '大伟',
+        username: 'GingTung',
         accessToken: '',
         roles: ['common']
     }),
@@ -43,7 +43,7 @@ export const useUserStoreHook = defineStore('userInfo', {
         // 刷新用户信息
         storeRefreshUserInfo() {
             // 修正拼写错误 stroe -> store
-            if (this.username === '大伟' && this.accessToken !== '') {
+            if (this.username === 'GingTung' && this.accessToken !== '') {
                 refreshUserInfo({
                     accessToken: this.accessToken
                 })
