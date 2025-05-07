@@ -46,20 +46,20 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
         },
         plugins: [
             // 自动化外链
-            createHtmlPlugin({
-                inject: {
-                    data: {
-                        monentscript:
-                            '<script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.js"></script>',
-                        videoscript:
-                            '<script src="https://cdn.jsdelivr.net/npm/video.js@7.14.3/dist/video.min.js"></script>',
-                        echartscript: '<script src="https://cdn.jsdelivr.net/npm/echarts@5.2.1/echarts"></script>',
-                        jspdfscript: '<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/pdf.js"></script>',
-                        xlsxscript:
-                            '<script src="https://cdn.jsdelivr.net/npm/xlsx@0.17.4/dist/xlsx.full.min.js"></script>'
-                    }
-                }
-            }),
+            // createHtmlPlugin({
+            //     inject: {
+            //         data: {
+            //             monentscript:
+            //                 '<script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.js"></script>',
+            //             videoscript:
+            //                 '<script src="https://cdn.jsdelivr.net/npm/video.js@7.14.3/dist/video.min.js"></script>',
+            //             echartscript: '<script src="https://cdn.jsdelivr.net/npm/echarts@5.2.1/echarts"></script>',
+            //             jspdfscript: '<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/pdf.js"></script>',
+            //             xlsxscript:
+            //                 '<script src="https://cdn.jsdelivr.net/npm/xlsx@0.17.4/dist/xlsx.full.min.js"></script>'
+            //         }
+            //     }
+            // }),
             // brotli压缩插件
             // brotli({}),
 
