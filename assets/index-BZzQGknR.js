@@ -1,0 +1,1 @@
+import{_ as r,a as n,G as s,o as t,a8 as c}from"./vendor-BVr2knxT.js";import{r as a,p}from"./common-CxcvxXcI.js";const _={};function i(u,f){const e=n("router-view");return t(),s(e)}const m=r(_,[["render",i]]),o=c(m);console.log("PROD","111");o.use(a);o.use(p);o.mount("#app");
