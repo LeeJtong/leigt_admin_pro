@@ -25,7 +25,7 @@ const globals = externalGlobals({
     // xlsx: 'XLSX',
     // echart: 'echart'
 });
-export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
+export default defineConfig(({ command,mode }: ConfigEnv): UserConfig => {
     // 获取当前工作目录
     const root = process.cwd();
     // 获取环境变量
@@ -76,13 +76,25 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
             // jsx文件编译插件
             vueJsx(),
             // 开启mock服务器
-            viteMockServe({
-                // 如果接口为 /mock/xxx 以 mock 开头就会被拦截响应配置的内容
-                mockPath: 'mock', // 数据模拟需要拦截的请求起始 URL
-                enable: true // 本地环境是否开启 mock 功能
+            // viteMockServe({
+            //     // 如果接口为 /mock/xxx 以 mock 开头就会被拦截响应配置的内容
+            //     mockPath: 'mock', // 数据模拟需要拦截的请求起始 URL
+            //     enable: true // 本地环境是否开启 mock 功能
 
-                // localEnabled: true, // 本地开发是否启用
-                // prodEnabled: false, // 生产模式是否启用
+            //     // localEnabled: true, // 本地开发是否启用
+            //     // prodEnabled: false, // 生产模式是否启用
+            // }),
+
+            // Mock插件配置
+            viteMockServe({
+                mockPath: 'mock',  // 模拟数据文件所在的目录
+                localEnabled: command === 'serve',  // 仅在开发环境启用 mock
+                prodEnabled: command !== 'serve',  // 生产环境也启用 mock
+                injectCode: `
+                    // 动态导入 mock 模块
+                    import.meta.globEager('./mock/**/*.ts');
+                `,
+                watchFiles: true,  // 监听文件变化
             }),
 
             // 开启ElementPlus自动引入CSS
