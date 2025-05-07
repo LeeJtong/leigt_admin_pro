@@ -19,11 +19,11 @@ import { createHtmlPlugin } from 'vite-plugin-html';
 import { manualChunksPlugin } from 'vite-plugin-webpackchunkname';
 
 const globals = externalGlobals({
-    moment: 'moment',
-    'video.js': 'videojs',
-    jspdf: 'jspdf',
-    xlsx: 'XLSX',
-    echart: 'echart'
+    // moment: 'moment',
+    // 'video.js': 'videojs',
+    // jspdf: 'jspdf',
+    // xlsx: 'XLSX',
+    // echart: 'echart'
 });
 export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
     // 获取当前工作目录
@@ -155,7 +155,7 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
                 input: {
                     index: fileURLToPath(new URL('./index.html', import.meta.url))
                 },
-                external: ['moment', 'video.js', 'jspdf', 'xlsx', 'echart'],
+                // external: ['moment', 'video.js', 'jspdf', 'xlsx', 'echart'],
                 // 分析工具
                 plugins: [visualizer({ open: true }), globals],
                 // experimentalLogSideEffects: true,
