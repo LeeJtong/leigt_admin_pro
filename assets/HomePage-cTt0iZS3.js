@@ -1,1 +1,0 @@
-import{_ as e,c,o as n}from"./vendor-zCpE3Nmk.js";const t={};function r(s,o){return n(),c("h1",null,"Vue3 + TypeScript + Less + ElementPlust + Pinia 管理后台")}const _=e(t,[["render",r]]);export{_ as default};
