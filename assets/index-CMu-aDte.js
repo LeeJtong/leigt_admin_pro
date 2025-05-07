@@ -1,0 +1,1 @@
+import{_ as r,a as t,K as n,o as s,ab as a}from"./vendor-npTBgVJn.js";import{r as c,p}from"./common-DPBG_eAh.js";const _={};function i(u,f){const o=t("router-view");return s(),n(o)}const m=r(_,[["render",i]]),e=a(m);e.use(c);e.use(p);e.mount("#app");
