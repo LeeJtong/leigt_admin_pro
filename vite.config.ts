@@ -49,14 +49,14 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
             createHtmlPlugin({
                 inject: {
                     data: {
-                        monentscript:
-                            '<script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.js"></script>',
-                        videoscript:
-                            '<script src="https://cdn.jsdelivr.net/npm/video.js@7.14.3/dist/video.min.js"></script>',
-                        echartscript: '<script src="https://cdn.jsdelivr.net/npm/echarts@5.2.1/echarts"></script>',
-                        jspdfscript: '<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/pdf.js"></script>',
-                        xlsxscript:
-                            '<script src="https://cdn.jsdelivr.net/npm/xlsx@0.17.4/dist/xlsx.full.min.js"></script>'
+                        // monentscript:
+                        //     '<script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.js"></script>',
+                        // videoscript:
+                        //     '<script src="https://cdn.jsdelivr.net/npm/video.js@7.14.3/dist/video.min.js"></script>',
+                        // echartscript: '<script src="https://cdn.jsdelivr.net/npm/echarts@5.2.1/echarts"></script>',
+                        // jspdfscript: '<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/pdf.js"></script>',
+                        // xlsxscript:
+                        //     '<script src="https://cdn.jsdelivr.net/npm/xlsx@0.17.4/dist/xlsx.full.min.js"></script>'
                     }
                 }
             }),
@@ -100,7 +100,7 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
             // 自动注册组件
             Components({
                 resolvers: [IconsResolver(), ElementPlusResolver()],
-                dts: fileURLToPath(new URL('/types/components.d.ts', import.meta.url)),
+                dts: fileURLToPath(new URL('./types/components.d.ts', import.meta.url)),
                 dirs: [fileURLToPath(new URL('./src/components/auto', import.meta.url))],
                 include: [/\.vue$/, /\.vue\?/]
             }),
