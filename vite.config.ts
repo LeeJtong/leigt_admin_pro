@@ -74,13 +74,22 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
             // jsx文件编译插件
             vueJsx(),
             // 开启mock服务器
-            viteMockServe({
-                // 如果接口为 /mock/xxx 以 mock 开头就会被拦截响应配置的内容
-                mockPath: 'mock', // 数据模拟需要拦截的请求起始 URL
-                enable: true // 本地环境是否开启 mock 功能
+            // viteMockServe({
+            //     // 如果接口为 /mock/xxx 以 mock 开头就会被拦截响应配置的内容
+            //     mockPath: 'mock', // 数据模拟需要拦截的请求起始 URL
+            //     enable: true // 本地环境是否开启 mock 功能
 
-                // localEnabled: true, // 本地开发是否启用
-                // prodEnabled: false, // 生产模式是否启用
+            //     // localEnabled: true, // 本地开发是否启用
+            //     // prodEnabled: false, // 生产模式是否启用
+            // }),
+            viteMockServe({
+                mockPath: 'mock', // mock 文件夹路径
+                localEnabled: true, // 本地开发环境启用
+                prodEnabled: true, // 生产环境也启用 mock
+                injectCode: `
+                  import { setupProdMockServer } from './mockProdServer'
+                  setupProdMockServer()
+                ` // 构建时自动注入
             }),
 
             // 开启ElementPlus自动引入CSS
