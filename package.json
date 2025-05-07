@@ -99,5 +99,10 @@
         "*.md": [
             "prettier --write"
         ]
+    },
+    "pnpm": {
+    "overrides": {
+      "@antfu/install-pkg": "1.0.1"
     }
+  }
 }

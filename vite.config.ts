@@ -50,7 +50,13 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
             AutoImport({
                 imports: ['vue', 'vue-router', 'pinia'],
                 eslintrc: { enabled: true },
-                resolvers: [ElementPlusResolver(), IconsResolver()],
+                resolvers: [
+                    ElementPlusResolver(),
+                    IconsResolver({
+                        prefix: 'Icon' // 使用 <Icon...> 作为组件前缀
+                    })
+                    // IconsResolver()
+                ],
                 dts: fileURLToPath(new URL('./types/auto-imports.d.ts', import.meta.url))
             }),
             Components({
@@ -59,7 +65,8 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
                 dirs: [fileURLToPath(new URL('./src/components/auto', import.meta.url))],
                 include: [/\.vue$/, /\.vue\?/]
             }),
-            Icons({ autoInstall: true }),
+            // Icons({ autoInstall: true }),
+            Icons({ autoInstall: false }),
             manualChunksPlugin(),
 
             // ✅ 保证在所有插件最后
