@@ -87,7 +87,7 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
                 localEnabled: true, // 本地开发环境启用
                 prodEnabled: true, // 生产环境也启用 mock
                 injectCode: `
-                  import { setupProdMockServer } from './mockProdServer'
+                  import { setupProdMockServer } from './src/mockProdServer'
                   setupProdMockServer()
                 ` // 构建时自动注入
             }),
