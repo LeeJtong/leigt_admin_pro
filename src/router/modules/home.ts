@@ -95,26 +95,6 @@ export default {
                 isShow: true,
                 parentRouter: 'Layout'
             }
-        },
-        {
-            path: '/button',
-            name: 'ButtonPage',
-            component: () => import(/* webpackChunkName: "auth" */ '@/views/button/index.vue'),
-            meta: {
-                title: '按钮封装',
-                isShow: true,
-                parentRouter: 'Layout'
-            }
-        },
-        {
-            path: '/sourceMap',
-            name: 'SourceMapPage',
-            component: () => import(/* webpackChunkName: "auth" */ '@/views/sourceMap/index.vue'),
-            meta: {
-                title: '错误源码映射',
-                isShow: true,
-                parentRouter: 'Layout'
-            }
         }
     ]
 };

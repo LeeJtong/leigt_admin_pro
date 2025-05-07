@@ -6,7 +6,7 @@
             </el-header>
             <el-container>
                 <el-aside width="200px">
-                    <Menu class="Menu"></Menu>
+                    <Menu></Menu>
                 </el-aside>
                 <el-main>
                     <el-breadcrumb :separator-icon="ArrowRight">
@@ -41,7 +41,8 @@ const locale = computed(() => (language.value === 'zh-cn' ? zhCn : en));
 
 .el-container {
     height: 100%;
-    .Menu {
+
+    .el-menu {
         height: 100%;
     }
 }

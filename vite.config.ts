@@ -19,13 +19,13 @@ import { createHtmlPlugin } from 'vite-plugin-html';
 import { manualChunksPlugin } from 'vite-plugin-webpackchunkname';
 
 const globals = externalGlobals({
-    // moment: 'moment',
-    // 'video.js': 'videojs',
-    // jspdf: 'jspdf',
-    // xlsx: 'XLSX',
-    // echart: 'echart'
+    moment: 'moment',
+    'video.js': 'videojs',
+    jspdf: 'jspdf',
+    xlsx: 'XLSX',
+    echart: 'echart'
 });
-export default defineConfig(({ command,mode }: ConfigEnv): UserConfig => {
+export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
     // 获取当前工作目录
     const root = process.cwd();
     // 获取环境变量
@@ -34,9 +34,7 @@ export default defineConfig(({ command,mode }: ConfigEnv): UserConfig => {
         // 项目根目录
         root,
         // 项目部署的基础路径
-        // base: '/',
         base: './',
-        // base: '/leigt_admin_pro/',
         publicDir: fileURLToPath(new URL('./public', import.meta.url)), // 无需处理的静态资源位置
         assetsInclude: fileURLToPath(new URL('./src/assets', import.meta.url)), // 需要处理的静态资源位置
         css: {
@@ -48,20 +46,20 @@ export default defineConfig(({ command,mode }: ConfigEnv): UserConfig => {
         },
         plugins: [
             // 自动化外链
-            // createHtmlPlugin({
-            //     inject: {
-            //         data: {
-            //             monentscript:
-            //                 '<script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.js"></script>',
-            //             videoscript:
-            //                 '<script src="https://cdn.jsdelivr.net/npm/video.js@7.14.3/dist/video.min.js"></script>',
-            //             echartscript: '<script src="https://cdn.jsdelivr.net/npm/echarts@5.2.1/echarts"></script>',
-            //             jspdfscript: '<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/pdf.js"></script>',
-            //             xlsxscript:
-            //                 '<script src="https://cdn.jsdelivr.net/npm/xlsx@0.17.4/dist/xlsx.full.min.js"></script>'
-            //         }
-            //     }
-            // }),
+            createHtmlPlugin({
+                inject: {
+                    data: {
+                        monentscript:
+                            '<script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.js"></script>',
+                        videoscript:
+                            '<script src="https://cdn.jsdelivr.net/npm/video.js@7.14.3/dist/video.min.js"></script>',
+                        echartscript: '<script src="https://cdn.jsdelivr.net/npm/echarts@5.2.1/echarts"></script>',
+                        jspdfscript: '<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/pdf.js"></script>',
+                        xlsxscript:
+                            '<script src="https://cdn.jsdelivr.net/npm/xlsx@0.17.4/dist/xlsx.full.min.js"></script>'
+                    }
+                }
+            }),
             // brotli压缩插件
             // brotli({}),
 
@@ -76,26 +74,13 @@ export default defineConfig(({ command,mode }: ConfigEnv): UserConfig => {
             // jsx文件编译插件
             vueJsx(),
             // 开启mock服务器
-            // viteMockServe({
-            //     // 如果接口为 /mock/xxx 以 mock 开头就会被拦截响应配置的内容
-            //     mockPath: 'mock', // 数据模拟需要拦截的请求起始 URL
-            //     enable: true // 本地环境是否开启 mock 功能
-
-            //     // localEnabled: true, // 本地开发是否启用
-            //     // prodEnabled: false, // 生产模式是否启用
-            // }),
-
-            // Mock插件配置
             viteMockServe({
-                mockPath: 'mock',  // 模拟数据文件所在的目录
-                enable: true,
-                localEnabled: command === 'serve',  // 仅在开发环境启用 mock
-                prodEnabled: command !== 'serve',  // 生产环境也启用 mock
-                injectCode: `
-                    // 动态导入 mock 模块
-                    import.meta.globEager('./mock/**/*.ts');
-                `,
-                watchFiles: true,  // 监听文件变化
+                // 如果接口为 /mock/xxx 以 mock 开头就会被拦截响应配置的内容
+                mockPath: 'mock', // 数据模拟需要拦截的请求起始 URL
+                enable: true // 本地环境是否开启 mock 功能
+
+                // localEnabled: true, // 本地开发是否启用
+                // prodEnabled: false, // 生产模式是否启用
             }),
 
             // 开启ElementPlus自动引入CSS
@@ -115,7 +100,7 @@ export default defineConfig(({ command,mode }: ConfigEnv): UserConfig => {
             // 自动注册组件
             Components({
                 resolvers: [IconsResolver(), ElementPlusResolver()],
-                dts: fileURLToPath(new URL('./types/components.d.ts', import.meta.url)),
+                dts: fileURLToPath(new URL('/types/components.d.ts', import.meta.url)),
                 dirs: [fileURLToPath(new URL('./src/components/auto', import.meta.url))],
                 include: [/\.vue$/, /\.vue\?/]
             }),
@@ -170,7 +155,7 @@ export default defineConfig(({ command,mode }: ConfigEnv): UserConfig => {
                 input: {
                     index: fileURLToPath(new URL('./index.html', import.meta.url))
                 },
-                // external: ['moment', 'video.js', 'jspdf', 'xlsx', 'echart'],
+                external: ['moment', 'video.js', 'jspdf', 'xlsx', 'echart'],
                 // 分析工具
                 plugins: [visualizer({ open: true }), globals],
                 // experimentalLogSideEffects: true,

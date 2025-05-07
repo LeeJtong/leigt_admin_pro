@@ -1,5 +1,1 @@
-## 📖简介
-- 用于快速搭建前端项目的命令行工具
-
-## 📕 模板
--  ✅ 快速生成 [Vue3+TS+Vite+ElementPlus+Pinia+Axios+Mock的模板](https://gitee.com/Li-JianTong10_20/lei-gt_admin-pro.git)
+这是 **大伟聊前端-前端工程化体系-高级资深前端进阶实战-月薪30k必备高阶技术--默认班级 128节** 代码

@@ -64,7 +64,7 @@ async function userLogin() {
     justify-content: space-evenly;
     align-items: center;
     height: 100vh;
-    background: var(--leigt-backgroud-color);
+    background: var(--dawei-backgroud-color);
 
     .login-form {
         display: flex;

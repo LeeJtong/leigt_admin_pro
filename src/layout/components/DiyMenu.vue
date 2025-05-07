@@ -38,8 +38,4 @@ const menuList = router.options.routes[0].children?.filter((item) => {
 const activeMenu = route.path;
 </script>
 
-<style lang="less" scoped>
-.el-menu {
-    height: 100%;
-}
-</style>
+<style lang="scss" scoped></style>

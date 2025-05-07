@@ -52,7 +52,7 @@ const logout = () => {
     justify-content: space-between;
     align-items: center;
     height: 50px;
-    color: var(--leigt-color-dark-black);
+    color: var(--dawei-color-dark-black);
 }
 
 .out {
