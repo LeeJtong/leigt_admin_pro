@@ -7,6 +7,8 @@ export default [
         method: 'post',
         // 使用 body 可以获取请求体
         response: ({ body }) => {
+            console.log('请求体：', body);
+            
             // 简单编写一个逻辑
             // 用户名不等于密码就是密码错误
             if (body.username !== body.password) {

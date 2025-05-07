@@ -88,6 +88,7 @@ export default defineConfig(({ command,mode }: ConfigEnv): UserConfig => {
             // Mock插件配置
             viteMockServe({
                 mockPath: 'mock',  // 模拟数据文件所在的目录
+                enable: true,
                 localEnabled: command === 'serve',  // 仅在开发环境启用 mock
                 prodEnabled: command !== 'serve',  // 生产环境也启用 mock
                 injectCode: `
