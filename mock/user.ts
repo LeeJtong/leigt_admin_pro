@@ -7,6 +7,8 @@ export default [
         method: 'post',
         // 使用 body 可以获取请求体
         response: ({ body }) => {
+            console.log('请求体：', body);
+
             // 简单编写一个逻辑
             // 用户名不等于密码就是密码错误
             if (body.username !== body.password) {
@@ -22,12 +24,12 @@ export default [
                 };
             }
             // 其余的则显示登录成功
-            if (body.username === 'dawei') {
+            if (body.username === 'leigt') {
                 return {
                     code: 0,
                     message: '登录成功',
                     data: {
-                        username: 'dawei',
+                        username: 'leigt',
                         roles: ['admin'],
                         accessToken: 'admin'
                     }
@@ -50,14 +52,14 @@ export default [
         url: '/mock/api/getUserInfo',
         method: 'post',
         response: ({ body }) => {
-            if (body.accessToken === 'dawei') {
+            if (body.accessToken === 'leigt') {
                 return {
                     code: 0,
                     message: '登录成功',
                     data: {
-                        username: 'dawei',
+                        username: 'leigt',
                         roles: ['admin'],
-                        accessToken: 'dawei'
+                        accessToken: 'leigt'
                     }
                 };
             } else if (body.accessToken === 'common') {
