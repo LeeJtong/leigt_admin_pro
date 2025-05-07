@@ -2,31 +2,21 @@ name: todoList 自动部署
 on:
   push:
     branches:
-      - master
+      - rrweb
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: 拉取代码
       - uses: actions/checkout@v3
-
-      - name: 设置 pnpm
       - uses: pnpm/action-setup@v2
         with:
           version: 8.6.2
-
-      - name: 设置 Node.js
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-
-      - name: 安装依赖
       - run: npm install
-
-      - name: 构建项目
       - run: npm run build
-
-      - name: 部署到 GitHub Pages
+      - name: action-Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.DEPLOY_SECRET }}
