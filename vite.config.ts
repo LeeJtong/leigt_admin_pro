@@ -26,6 +26,7 @@ const globals = externalGlobals({
     echart: 'echart'
 });
 export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
+    const isBuild = mode === 'build';
     // 获取当前工作目录
     const root = process.cwd();
     // 获取环境变量
@@ -85,9 +86,9 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
             viteMockServe({
                 mockPath: 'mock', // mock 文件夹路径
                 localEnabled: true, // 本地开发环境启用
-                prodEnabled: true, // 生产环境也启用 mock
+                prodEnabled: isBuild && process.env.VITE_USE_MOCK === 'true', // 生产环境也启用 mock
                 injectCode: `
-                  import { setupProdMockServer } from './src/mockProdServer'
+                  import { setupProdMockServer } from './mockProdServer'
                   setupProdMockServer()
                 ` // 构建时自动注入
             }),
